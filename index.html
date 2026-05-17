@@ -30,6 +30,12 @@
             overflow-x: hidden;
         }
 
+        /* REGOLA PER INIZIALI ROSSO SCURO */
+        .hero h1 span::first-letter {
+            color: #8B0000; /* Rosso scuro */
+            font-weight: 800;
+        }
+
         /* HEADER FROSTED */
         header {
             position: fixed;
@@ -188,7 +194,11 @@
 
     <section class="hero">
         <div class="reveal">
-            <h1>Design<br>Estetica<br>Funzionalità</h1>
+            <h1>
+                <span>Design</span><br>
+                <span>Estetica</span><br>
+                <span>Funzionalità</span>
+            </h1>
             <p>Visione estetica e rigore gestionale. 30 anni di esperienza nella realizzazione di progetti d'eccellenza.</p>
             <a href="#contatti" class="cta-button">Richiedi una consulenza</a>
         </div>
