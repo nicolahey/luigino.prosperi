@@ -10,7 +10,6 @@
             --bg: #030303; 
             --text: #ffffff;
             --accent: #B59410; 
-            /* Giallo bilanciato per visibilità sul nero */
             --glass-yellow: rgba(100, 85, 25, 0.5); 
             --border-glass: rgba(181, 148, 16, 0.3);
         }
@@ -30,14 +29,6 @@
             overflow-x: hidden;
         }
 
-        /* REGOLA PER LE INIZIALI ROSSO SCURO */
-        .hero h1 span::first-letter {
-            color: #8B0000; 
-            font-weight: 800;
-            font-style: normal; /* Mantiene la lettera dritta per contrasto se il resto è italic */
-        }
-
-        /* HEADER FROSTED */
         header {
             position: fixed;
             top: 0;
@@ -114,12 +105,6 @@
             transition: all 0.5s ease;
         }
 
-        .card:hover {
-            background: rgba(181, 148, 16, 0.2);
-            border-color: var(--accent);
-            transform: scale(1.02);
-        }
-
         .card h3 {
             font-size: 0.9rem;
             text-transform: uppercase;
@@ -150,11 +135,6 @@
             transition: 0.3s;
         }
 
-        .cta-button:hover {
-            filter: brightness(1.2);
-            box-shadow: 0 10px 20px rgba(181, 148, 16, 0.2);
-        }
-
         .contact-link {
             font-size: clamp(1.8rem, 6vw, 4.5rem);
             color: white;
@@ -163,18 +143,12 @@
             display: block;
             margin-bottom: 10px;
             transition: 0.3s;
-            overflow-wrap: break-word;
             font-style: italic;
-        }
-
-        .contact-link:hover {
-            color: var(--accent);
         }
 
         @media (max-width: 768px) {
             section { padding: 80px 7%; }
             .hero h1 { line-height: 1.0; }
-            .card { padding: 30px; }
         }
     </style>
 </head>
@@ -188,9 +162,9 @@
     <section class="hero">
         <div class="reveal">
             <h1>
-                <span>Design</span><br>
-                <span>Estetica</span><br>
-                <span>Funzionalità</span>
+                <span style="color: #8B0000; font-style: normal;">D</span>esign<br>
+                <span style="color: #8B0000; font-style: normal;">E</span>stetica<br>
+                <span style="color: #8B0000; font-style: normal;">F</span>unzionalità
             </h1>
             <p>Visione estetica e rigore gestionale. 30 anni di esperienza nella realizzazione di progetti d'eccellenza.</p>
             <a href="#contatti" class="cta-button">Richiedi una consulenza</a>
