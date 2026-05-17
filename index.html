@@ -7,18 +7,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #030303; /* Nero assoluto per profondità */
+            --bg: #030303; 
             --text: #ffffff;
-            --accent: #B59410; /* Giallo senape/oro */
-            --glass-yellow: rgba(40, 35, 10, 0.6); /* Giallo scurissimo trasparente */
-            --border-glass: rgba(181, 148, 16, 0.2);
+            --accent: #B59410; 
+            /* Giallo bilanciato per visibilità sul nero */
+            --glass-yellow: rgba(100, 85, 25, 0.5); 
+            --border-glass: rgba(181, 148, 16, 0.3);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* Applicazione Instrument Serif */
             font-family: 'Instrument Serif', serif;
             scroll-behavior: smooth;
         }
@@ -30,10 +30,11 @@
             overflow-x: hidden;
         }
 
-        /* REGOLA PER INIZIALI ROSSO SCURO */
+        /* REGOLA PER LE INIZIALI ROSSO SCURO */
         .hero h1 span::first-letter {
-            color: #8B0000; /* Rosso scuro */
+            color: #8B0000; 
             font-weight: 800;
+            font-style: normal; /* Mantiene la lettera dritta per contrasto se il resto è italic */
         }
 
         /* HEADER FROSTED */
@@ -60,7 +61,6 @@
             color: var(--accent);
         }
 
-        /* ANIMAZIONE REVEAL OTTIMIZZATA */
         .reveal {
             opacity: 0;
             filter: blur(15px);
@@ -82,14 +82,11 @@
             padding: 100px 10%;
         }
 
-        /* HERO - FIX MESSA A CAPO MOBILE */
         .hero h1 {
-            font-size: clamp(3rem, 10vw, 7rem);
+            font-size: clamp(3.5rem, 10vw, 7.5rem);
             font-weight: 400;
             line-height: 0.9;
             margin-bottom: 25px;
-            overflow-wrap: break-word;
-            word-break: keep-all; 
             font-style: italic;
         }
 
@@ -100,7 +97,6 @@
             font-weight: 200;
         }
 
-        /* GRID CON CASELLE GIALLO SCURO FROSTED */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -113,13 +109,13 @@
             padding: 40px;
             border-radius: 15px;
             border: 1px solid var(--border-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px) saturate(150%);
+            -webkit-backdrop-filter: blur(25px) saturate(150%);
             transition: all 0.5s ease;
         }
 
         .card:hover {
-            background: rgba(181, 148, 16, 0.15);
+            background: rgba(181, 148, 16, 0.2);
             border-color: var(--accent);
             transform: scale(1.02);
         }
@@ -130,7 +126,7 @@
             color: var(--accent);
             letter-spacing: 2px;
             margin-bottom: 15px;
-            font-family: sans-serif; /* Unico elemento sans per contrasto tecnico */
+            font-family: sans-serif;
             font-weight: 600;
         }
 
@@ -141,7 +137,6 @@
             line-height: 1.2;
         }
 
-        /* BOTTONE */
         .cta-button {
             display: inline-block;
             margin-top: 40px;
@@ -160,7 +155,6 @@
             box-shadow: 0 10px 20px rgba(181, 148, 16, 0.2);
         }
 
-        /* CONTATTI */
         .contact-link {
             font-size: clamp(1.8rem, 6vw, 4.5rem);
             color: white;
@@ -177,7 +171,6 @@
             color: var(--accent);
         }
 
-        /* FIX MOBILE WRAPPING */
         @media (max-width: 768px) {
             section { padding: 80px 7%; }
             .hero h1 { line-height: 1.0; }
@@ -210,7 +203,7 @@
             <div class="grid">
                 <div class="card">
                     <h3>01. Management</h3>
-                    <p>Coordinamento strategico e operativo per store Scavolini (Ancona,Jesi,Reggio Emilia,Sassuolo)</p>
+                    <p>Coordinamento strategico e operativo per store Scavolini (Ancona, Jesi, Reggio Emilia, Sassuolo)</p>
                 </div>
                 <div class="card">
                     <h3>02. Interior Designer</h3>
