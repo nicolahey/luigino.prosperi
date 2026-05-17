@@ -7,11 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #050505;
-            --text: #ffffff;
-            --accent: #c5a059;
-            --secondary: #888888;
-            --glass: rgba(255, 255, 255, 0.03);
+            /* Palette di colori calda e sofisticata */
+            --bg: #B59410; /* Un giallo scuro/senape profondo */
+            --text: #1a1a1a; /* Testo scuro per contrasto */
+            --accent: #ffffff; /* Bianco per elementi principali */
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-strong: rgba(255, 255, 255, 0.2);
         }
 
         * {
@@ -29,7 +30,7 @@
             overflow-x: hidden;
         }
 
-        /* HEADER CON SFOCATURA DINAMICA */
+        /* HEADER CON EFFETTO LIQUID GLASS */
         header {
             position: fixed;
             top: 0;
@@ -39,10 +40,10 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: var(--glass);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logo {
@@ -50,16 +51,15 @@
             letter-spacing: 3px;
             font-size: 0.9rem;
             text-transform: uppercase;
-            color: var(--accent);
+            color: var(--text);
         }
 
         /* ANIMAZIONE DI SCORRIMENTO (REVEAL) */
         .reveal {
             opacity: 0;
-            filter: blur(20px);
-            transform: translateY(60px);
-            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-            will-change: transform, opacity, filter;
+            filter: blur(10px);
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .reveal.active {
@@ -74,23 +74,31 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 10%;
+            padding: 100px 10% 60px 10%;
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION CON OTTIMIZZAZIONE MOBILE */
+        .hero {
+            padding-top: 140px; /* Spazio per l'header fisso */
+        }
+
         .hero h1 {
-            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            font-size: clamp(2rem, 6vw, 4.5rem); /* Dimensione responsive con limite inferiore per mobile */
             font-weight: 800;
-            line-height: 1;
+            line-height: 1.1;
             letter-spacing: -2px;
             margin-bottom: 25px;
+            color: var(--accent);
+            word-wrap: break-word; /* Evita che parole lunghe sporgano */
+            hyphens: auto; /* Aggiunge trattini automatici se necessario */
         }
 
         .hero p {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            color: var(--secondary);
-            max-width: 650px;
-            font-weight: 300;
+            font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+            color: var(--text);
+            max-width: 700px;
+            font-weight: 400;
+            margin-bottom: 40px;
         }
 
         /* GRID ESPERIENZE PROFESSIONALI */
@@ -103,75 +111,100 @@
 
         .card {
             background: var(--glass);
-            padding: 45px;
-            border-radius: 4px; /* Taglio netto più professionale */
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.5s;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .card:hover {
-            background: rgba(255,255,255,0.07);
-            border-color: var(--accent);
+            background: var(--glass-strong);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
 
         .card h3 {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             color: var(--accent);
             letter-spacing: 2px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .card p {
-            font-size: 1.1rem;
-            color: #ccc;
+            font-size: 1rem;
+            color: var(--text);
         }
 
         /* CTA PROFESSIONALE */
         .cta-button {
             display: inline-block;
-            margin-top: 40px;
-            padding: 18px 40px;
-            background: none;
-            color: var(--accent);
-            border: 1px solid var(--accent);
+            padding: 15px 35px;
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            transition: 0.4s;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .cta-button:hover {
-            background: var(--accent);
-            color: black;
+            background: var(--text);
+            color: var(--accent);
+            transform: translateY(-2px);
         }
 
-        /* CONTATTI */
+        /* CONTATTI PROFESSIONALI */
         .contact-box {
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             padding-top: 60px;
+            text-align: center;
         }
 
         .contact-link {
-            font-size: clamp(1.5rem, 4vw, 3rem);
-            color: white;
+            font-size: clamp(1.3rem, 3.5vw, 2.8rem);
+            color: var(--accent);
             text-decoration: none;
             font-weight: 800;
             display: block;
             margin-bottom: 10px;
-            transition: 0.3s;
+            transition: color 0.3s ease;
+            word-wrap: break-word;
         }
 
         .contact-link:hover {
-            color: var(--accent);
+            color: var(--text);
         }
 
-        /* MOBILE */
+        /* MOBILE OPTIMIZATION */
         @media (max-width: 768px) {
-            section { padding: 0 7%; }
-            .hero h1 { margin-top: 80px; }
+            section {
+                padding-left: 5%;
+                padding-right: 5%;
+                min-height: auto;
+                padding-bottom: 80px;
+            }
+
+            .hero h1 {
+                line-height: 1.2;
+                margin-bottom: 20px;
+            }
+
+            .card {
+                padding: 30px;
+            }
+
+            header {
+                padding: 15px 5%;
+            }
         }
     </style>
 </head>
@@ -179,12 +212,12 @@
 
     <header>
         <div class="logo">Luigino Prosperi</div>
-        <a href="https://it.linkedin.com/in/luigino-prosperi-a9088212b" target="_blank" style="color:var(--accent); text-decoration:none; font-size:0.7rem; letter-spacing:1px; font-weight:700;">PROFILO LINKEDIN</a>
+        <a href="https://it.linkedin.com/in/luigino-prosperi-a9088212b" target="_blank" style="color:var(--text); text-decoration:none; font-size:0.7rem; letter-spacing:1px; font-weight:700;">PROFILO LINKEDIN</a>
     </header>
 
     <section class="hero">
         <div class="reveal">
-            <h1>Design Esecutivo.<br>Direzione Operativa.</h1>
+            <h1>Design Esecutivo<br>e Direzione Operativa</h1>
             <p>Sinergia tra visione estetica e rigore gestionale. Trent'anni di esperienza nella trasformazione di spazi complessi in realtà funzionali d'eccellenza.</p>
             <a href="#contatti" class="cta-button">Consulenza Strategica</a>
         </div>
@@ -192,7 +225,7 @@
 
     <section id="esperienze">
         <div class="reveal">
-            <h2 style="font-size: 0.8rem; letter-spacing: 4px; color: var(--secondary); text-transform: uppercase; margin-bottom: 20px;">Esperienze di Rilievo</h2>
+            <h2 style="font-size: 0.75rem; letter-spacing: 3px; color: var(--text); text-transform: uppercase; margin-bottom: 25px; font-weight: 500;">Esperienze di Rilievo</h2>
             <div class="grid">
                 <div class="card">
                     <h3>01. Management Operativo</h3>
@@ -212,13 +245,13 @@
 
     <section id="contatti">
         <div class="reveal contact-box">
-            <p style="color: var(--accent); font-weight: 500; margin-bottom: 20px; letter-spacing: 2px;">CONTATTI PROFESSIONALI</p>
+            <p style="color: var(--accent); font-weight: 600; margin-bottom: 20px; letter-spacing: 1.5px; font-size: 0.8rem; text-transform: uppercase;">CONTATTI PROFESSIONALI</p>
             <a href="mailto:luigino-scavolini@esse-store.net" class="contact-link">luigino-scavolini@esse-store.net</a>
-            <a href="tel:+393515095692" class="contact-link" style="font-size: 1.5rem; opacity: 0.7;">+39 351 509 5692</a>
+            <a href="tel:+393515095692" class="contact-link" style="font-size: 1.3rem; opacity: 0.8;">+39 351 509 5692</a>
         </div>
     </section>
 
-    <footer style="padding: 50px 10%; font-size: 0.7rem; color: #444; letter-spacing: 2px;">
+    <footer style="padding: 40px 10%; font-size: 0.7rem; color: #1a1a1a; letter-spacing: 1px; text-align: center;">
         &copy; 2026 LUIGINO PROSPERI. TUTTI I DIRITTI RISERVATI.
     </footer>
 
@@ -229,7 +262,7 @@
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
+                var elementVisible = 120; // Inizio dell'animazione un po' prima
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
                 }
