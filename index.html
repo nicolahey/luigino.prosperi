@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luigino Prosperi | Interior & Operation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <title>Luigino Prosperi | Executive Interior Designer & COO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0a0a0a;
+            --bg: #050505;
             --text: #ffffff;
             --accent: #c5a059;
-            --glass: rgba(255, 255, 255, 0.05);
-            --blur: blur(15px);
+            --secondary: #888888;
+            --glass: rgba(255, 255, 255, 0.03);
         }
 
         * {
@@ -25,10 +25,11 @@
         body {
             background-color: var(--bg);
             color: var(--text);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* --- HEADER SFOCATO IN TEMPO REALE --- */
+        /* HEADER CON SFOCATURA DINAMICA */
         header {
             position: fixed;
             top: 0;
@@ -38,156 +39,206 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: rgba(10, 10, 10, 0.7);
-            backdrop-filter: var(--blur); /* Effetto sfocatura dinamica */
-            -webkit-backdrop-filter: var(--blur);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .logo {
-            font-weight: 900;
-            letter-spacing: 2px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            font-size: 1.1rem;
+            color: var(--accent);
         }
 
-        /* --- SEZIONI CON ANIMAZIONE DI SCORRIMENTO --- */
-        section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 100px 8%;
-            opacity: 0; /* Partono invisibili */
-            filter: blur(10px); /* Partono sfocate */
-            transform: translateY(50px); /* Partono leggermente più in basso */
-            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        /* ANIMAZIONE DI SCORRIMENTO (REVEAL) */
+        .reveal {
+            opacity: 0;
+            filter: blur(20px);
+            transform: translateY(60px);
+            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform, opacity, filter;
         }
 
-        /* Quando la sezione diventa visibile */
-        section.reveal {
+        .reveal.active {
             opacity: 1;
             filter: blur(0px);
             transform: translateY(0);
         }
 
-        /* --- HERO --- */
-        .hero {
-            text-align: center;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+        /* SEZIONI */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
         }
 
+        /* HERO SECTION */
         .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            line-height: 1.1;
-            margin-bottom: 20px;
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -2px;
+            margin-bottom: 25px;
         }
 
-        .hero span {
-            color: var(--accent);
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--secondary);
+            max-width: 650px;
+            font-weight: 300;
         }
 
-        /* --- GRID ESPERIENZE --- */
+        /* GRID ESPERIENZE PROFESSIONALI */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             margin-top: 50px;
         }
 
         .card {
             background: var(--glass);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: 0.4s;
+            padding: 45px;
+            border-radius: 4px; /* Taglio netto più professionale */
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.5s;
         }
 
         .card:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.07);
             border-color: var(--accent);
-            transform: scale(1.02);
         }
 
-        /* --- BOTTONE CONTATTI --- */
-        .btn-contact {
+        .card h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--accent);
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        /* CTA PROFESSIONALE */
+        .cta-button {
             display: inline-block;
-            margin-top: 30px;
-            padding: 15px 35px;
+            margin-top: 40px;
+            padding: 18px 40px;
+            background: none;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.4s;
+        }
+
+        .cta-button:hover {
             background: var(--accent);
             color: black;
+        }
+
+        /* CONTATTI */
+        .contact-box {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 60px;
+        }
+
+        .contact-link {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            color: white;
             text-decoration: none;
-            font-weight: 700;
-            border-radius: 50px;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 10px;
             transition: 0.3s;
         }
 
-        .btn-contact:hover {
-            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        .contact-link:hover {
+            color: var(--accent);
         }
 
-        /* --- MOBILE OPTIMIZATION --- */
+        /* MOBILE */
         @media (max-width: 768px) {
-            section { padding: 60px 5%; }
-            .hero h1 { font-size: 3rem; }
+            section { padding: 0 7%; }
+            .hero h1 { margin-top: 80px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">LUIGINO PROSPERI</div>
-        <a href="https://it.linkedin.com/in/luigino-prosperi-a9088212b" target="_blank" style="color:white; text-decoration:none; font-size:0.8rem; border: 1px solid var(--accent); padding: 5px 10px; border-radius: 5px;">LINKEDIN</a>
+        <div class="logo">Luigino Prosperi</div>
+        <a href="https://it.linkedin.com/in/luigino-prosperi-a9088212b" target="_blank" style="color:var(--accent); text-decoration:none; font-size:0.7rem; letter-spacing:1px; font-weight:700;">PROFILO LINKEDIN</a>
     </header>
 
     <section class="hero">
-        <h1>Design<span>.</span><br>Management<span>.</span></h1>
-        <p style="color: #888; font-size: 1.2rem;">L'estetica dell'arredatore, la precisione del Direttore Operativo.</p>
-        <a href="#contatti" class="btn-contact">Lavoriamo Insieme</a>
+        <div class="reveal">
+            <h1>Design Esecutivo.<br>Direzione Operativa.</h1>
+            <p>Sinergia tra visione estetica e rigore gestionale. Trent'anni di esperienza nella trasformazione di spazi complessi in realtà funzionali d'eccellenza.</p>
+            <a href="#contatti" class="cta-button">Consulenza Strategica</a>
+        </div>
     </section>
 
     <section id="esperienze">
-        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Le Mie Esperienze</h2>
-        <div class="grid">
-            <div class="card">
-                <h3 style="color: var(--accent);">01. Scrittore</h3>
-                <p>Autore de "L'astro di Pietra". Una visione che va oltre il semplice design.</p>
-            </div>
-            <div class="card">
-                <h3 style="color: var(--accent);">02. Interior Design</h3>
-                <p>Esperienza trentennale nella progettazione di spazi abitativi d'eccellenza.</p>
-            </div>
-            <div class="card">
-                <h3 style="color: var(--accent);">03. COO Scavolini</h3>
-                <p>Direzione operativa per 4 centri Scavolini. Gestione flussi e logistica.</p>
+        <div class="reveal">
+            <h2 style="font-size: 0.8rem; letter-spacing: 4px; color: var(--secondary); text-transform: uppercase; margin-bottom: 20px;">Esperienze di Rilievo</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>01. Management Operativo</h3>
+                    <p>Direzione operativa e coordinamento logistico per quattro centri d'arredo Scavolini S.p.A.</p>
+                </div>
+                <div class="card">
+                    <h3>02. Interior Design</h3>
+                    <p>Progettazione d'interni con focus su materiali d'eccellenza e ottimizzazione degli spazi abitativi.</p>
+                </div>
+                <div class="card">
+                    <h3>03. Progetti Editoriali</h3>
+                    <p>Autore de "L'astro di Pietra", un'indagine che coniuga narrazione storica e sensibilità estetica.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contatti" style="text-align: center;">
-        <h2 style="font-size: 3rem;">Contatti</h2>
-        <p style="margin: 20px 0; color: #888;">Disponibile per consulenze e progetti di management.</p>
-        <a href="mailto:luigino-scavolini@esse-store.net" style="color: var(--accent); font-size: 1.5rem; text-decoration: none; display: block; margin-bottom: 10px;">luigino-scavolini@esse-store.net</a>
-        <a href="tel:+393515095692" style="color: white; text-decoration: none; font-size: 1.2rem;">+39 351 509 5692</a>
+    <section id="contatti">
+        <div class="reveal contact-box">
+            <p style="color: var(--accent); font-weight: 500; margin-bottom: 20px; letter-spacing: 2px;">CONTATTI PROFESSIONALI</p>
+            <a href="mailto:luigino-scavolini@esse-store.net" class="contact-link">luigino-scavolini@esse-store.net</a>
+            <a href="tel:+393515095692" class="contact-link" style="font-size: 1.5rem; opacity: 0.7;">+39 351 509 5692</a>
+        </div>
     </section>
 
+    <footer style="padding: 50px 10%; font-size: 0.7rem; color: #444; letter-spacing: 2px;">
+        &copy; 2026 LUIGINO PROSPERI. TUTTI I DIRITTI RISERVATI.
+    </footer>
+
     <script>
-        /* SCRIPT PER ANIMAZIONE DI SCORRIMENTO (REVEAL) */
-        const observerOptions = {
-            threshold: 0.15
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal');
+        // SCRIPT PER L'ANIMAZIONE DI SCORRIMENTO FLUIDA
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
                 }
-            });
-        }, observerOptions);
+            }
+        }
 
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
+        window.addEventListener("scroll", reveal);
+        // Esegui una volta al caricamento per mostrare la Hero subito
+        window.onload = reveal;
     </script>
 
 </body>
